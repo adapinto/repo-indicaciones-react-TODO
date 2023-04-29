@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { ICard } from '../interfaces/ICard';
 
+//Este código define un componente de React llamado Card que renderiza una tarjeta de tarea 
+//y tiene la capacidad de actualizar el estado de la tarea y eliminarla de la lista de tareas.
+
 function Card(props: ICard){
 
+    //El componente utiliza el hook useState de React para mantener el estado interno de la propiedad status. 
+    //La propiedad status representa el estado actual de la tarea (por ejemplo, "TODO", "In Progress" o "Completed").
     const [status, setStatus] = useState<string>(props.task.status ? props.task.status : 'TODO')
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -10,6 +15,8 @@ function Card(props: ICard){
         props.changeStatus(props.task.id, e.target.value)
     }
 
+    //Cuando se cambia el estado de la tarea a través del selector de estado en la tarjeta, la función handleSelectChange se llama y actualiza el estado interno 
+    //del componente y llama a la función changeStatus para actualizar el estado de la tarea en la lista de tareas.
     return (
 
         <div className="card">

@@ -1,10 +1,24 @@
 import { useState , useEffect } from 'react';
 import { ITask, ITaskFormProps } from '../interfaces/ITask'
 
+// define un componente llamado TaskForm, el cual es un formulario que permite 
+// ingresar información sobre una tarea.
+
+//es un formulario para ingresar información sobre una tarea, que valida los datos antes 
+//de guardarlos y muestra los errores en caso de que los haya.
+
 function TaskForm(props: ITaskFormProps) {
+
+//El componente utiliza los hooks useState y useEffect de React. Además, recibe por medio de sus props un objeto de 
+//tipo ITaskFormProps, el cual tiene la información de la tarea y las funciones necesarias para actualizarla y guardarla.
 
     const [errores, setErrores] = useState<string[]>([])
 
+//En caso de que haya algún error de validación, se almacena 
+//en el estado errores utilizando el hook useState. Si hay errores, se muestran debajo del botón de "Añadir".
+
+//El formulario contiene campos para el nombre de la tarea, el equipo asignado, la fecha de inicio, la fecha de fin y las horas requeridas para la tarea. Cuando se hace clic en el botón de "Añadir", se llama a la función validateForm que realiza 
+//algunas validaciones en los datos ingresados. Si todo es correcto, se llama a la función onSave para guardar la tarea.
     const validateForm = () => {
         
         let newError: string[] = [];
